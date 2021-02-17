@@ -14,18 +14,22 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Zoo.ViewModels;
 
-namespace Zoo
+namespace Zoo.ViewModels
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindowViewModel.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindowViewModel : UserControl
     {
-        public MainWindow()
+        public MainWindowViewModel()
         {
-            var MainWindow = new MainWindowViewModel();
             InitializeComponent();
-            this.Content = MainWindow;
+        }
+
+        private void NewAnimalBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var SubWindow = new AddNewAnimalViewModel(); 
+            this.Content = SubWindow;
         }
     }
 }

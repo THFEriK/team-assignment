@@ -13,3 +13,9 @@ C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo.csproj.GenerateResource.cache
 C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo.csproj.CoreCompileInputs.cache
 C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo.exe
 C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo.pdb
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\ViewModels\AddNewAnimalViewModel.g.cs
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\ViewModels\AddNewSpeciesViewModel.g.cs
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\ViewModels\MainWindowViewModel.g.cs
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\ViewModels\AddNewAnimalViewModel.baml
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\ViewModels\AddNewSpeciesViewModel.baml
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\ViewModels\MainWindowViewModel.baml
