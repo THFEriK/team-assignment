@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Munka\Prog\C#\Gábor Bolyai\team-assignment\Zoo\App.xaml
-11151548125
+4-1422242961
 
-61321929109
-13-1505183044
-MainWindow.xaml;
+102108582518
+136-1071536986
+MainWindow.xaml;ViewModels\AddNewAnimalViewModel.xaml;ViewModels\AddNewSpeciesViewModel.xaml;ViewModels\MainWindowViewModel.xaml;
 
 True
 
