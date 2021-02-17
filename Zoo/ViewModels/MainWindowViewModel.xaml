@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Zoo.ViewModels.MainWindowViewModel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Zoo.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- 1. Column -->
+        <DataGrid x:Name="AnimalsDg"
+                  Grid.RowSpan="2"
+                  Margin="15"/>
+
+        <!-- 2. Column -->
+        <ListBox x:Name="SpeciesLb"
+                 Grid.Column="1"
+                 Margin="15"/>
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="15">
+            <Button x:Name="NewAnimalBtn"
+                    Margin="0 15" Click="NewAnimalBtn_Click">
+                <TextBlock Text="Új állat felvétele"
+                           FontSize="22"/>
+            </Button>
+            <Button x:Name="DeleteBtn"
+                    Margin="0 15">
+                <TextBlock Text="Törlés"
+                           FontSize="22"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
