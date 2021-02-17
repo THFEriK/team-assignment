@@ -4,17 +4,26 @@
 winexe
 C#
 .cs
-C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\
+D:\Munka\Prog\C#\Gábor Bolyai\team-assignment\Zoo\obj\Debug\
 Zoo
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
+D:\Munka\Prog\C#\Gábor Bolyai\team-assignment\Zoo\App.xaml
+11151548125
+
+7-1216395333
+136-1071536986
+MainWindow.xaml;
+=======
 C:\Users\EriK\source\repos\Zoo\Zoo\App.xaml
 4-1422242961
 
 9464871982
 13-1505183044
 MainWindow.xaml;ViewModels\AddNewAnimalViewModel.xaml;ViewModels\AddNewSpeciesViewModel.xaml;ViewModels\MainWindowViewModel.xaml;
+>>>>>>> 5fddf54cce0fc6c88d1645a87ad8d9be1af55e84
 
-True
+False
 
