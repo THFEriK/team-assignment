@@ -1,0 +1,15 @@
+C:\Users\EriK\source\repos\Zoo\Zoo\bin\Debug\Zoo.exe.config
+C:\Users\EriK\source\repos\Zoo\Zoo\bin\Debug\Zoo.exe
+C:\Users\EriK\source\repos\Zoo\Zoo\bin\Debug\Zoo.pdb
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo.csprojAssemblyReference.cache
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\MainWindow.g.cs
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\App.g.cs
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo_MarkupCompile.cache
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo_MarkupCompile.lref
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\MainWindow.baml
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo.g.resources
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo.Properties.Resources.resources
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo.csproj.GenerateResource.cache
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo.csproj.CoreCompileInputs.cache
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo.exe
+C:\Users\EriK\source\repos\Zoo\Zoo\obj\Debug\Zoo.pdb
