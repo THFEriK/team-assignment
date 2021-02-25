@@ -81,9 +81,22 @@ namespace Zoo
 
             conn.Close();
         }
+
         private void Error(string ex)
         {
             MessageBox.Show(ex, "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        public void FillListBox(ListBox lb, string sql)
+        {
+            Connect();
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            lb.ItemsSource = ds.Tables[0].DefaultView;
+            lb.DisplayMemberPath = ds.Tables[0].Columns[1].ToString();
+            lb.SelectedValuePath = ds.Tables[0].Columns[0].ToString();
+            conn.Close();
         }
     }
 }
