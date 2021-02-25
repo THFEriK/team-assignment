@@ -27,6 +27,7 @@ namespace Zoo.ViewModels
         {
             InitializeComponent();
             conn.FillListBox(SpeciesLb, "SELECT id, speciesName FROM species");
+            conn.FillDataGrid(AnimalsDg);
         }
 
         private void NewAnimalBtn_Click(object sender, RoutedEventArgs e)

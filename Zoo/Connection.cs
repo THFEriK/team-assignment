@@ -90,12 +90,30 @@ namespace Zoo
         public void FillListBox(ListBox lb, string sql)
         {
             Connect();
-            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
-            DataSet ds = new DataSet();
+
+            var da = new MySqlDataAdapter(sql, conn);
+            var ds = new DataSet();
+
             da.Fill(ds);
             lb.ItemsSource = ds.Tables[0].DefaultView;
             lb.DisplayMemberPath = ds.Tables[0].Columns[1].ToString();
             lb.SelectedValuePath = ds.Tables[0].Columns[0].ToString();
+
+            conn.Close();
+        }
+
+        public void FillDataGrid(DataGrid dg)
+        {
+            Connect();
+
+            var sql = "SELECT animalName, speciesName, habitat, rate FROM animal LEFT JOIN species ON animal.species_id = species.id LEFT JOIN habitat ON animal.habitat_id = habitat.id LEFT JOIN rate ON animal.rate_id = rate.id";
+            var da = new MySqlDataAdapter(sql, conn);
+            var dt = new DataTable();
+
+            da.Fill(dt);
+            dg.ItemsSource = dt.DefaultView;
+            dg.SelectedValue = dt.Columns[0].ToString();
+
             conn.Close();
         }
     }
