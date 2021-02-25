@@ -67,7 +67,7 @@ namespace Zoo
         public void FillComboBox(ComboBox cb, string table, string column)
         {
             Connect();
-            string sql = String.Format("SELECT DISTINCT '{0}' FROM '{1}'", table, column);
+            string sql = String.Format("SELECT DISTINCT {0} FROM {1}", table, column);
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             DataSet ds = new DataSet();
             da.Fill(ds);

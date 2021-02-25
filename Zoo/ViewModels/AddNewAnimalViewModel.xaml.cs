@@ -20,9 +20,13 @@ namespace Zoo.ViewModels
     /// </summary>
     public partial class AddNewAnimalViewModel : UserControl
     {
+        Connection conn = new Connection();
         public AddNewAnimalViewModel()
-        {
+        {            
             InitializeComponent();
+            conn.FillComboBox(SpeciesCb, "speciesName", "species");
+            conn.FillComboBox(ContinentCb, "habitat", "habitat");
+            conn.FillComboBox(VulnerableRateCb, "rate", "rate");
         }
 
         private void NameTb_GotFocus(object sender, RoutedEventArgs e)
