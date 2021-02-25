@@ -27,6 +27,7 @@ namespace Zoo.ViewModels
             conn.FillComboBox(SpeciesCb, "id", "speciesName", "species");
             conn.FillComboBox(ContinentCb, "id", "habitat", "habitat");
             conn.FillComboBox(VulnerableRateCb, "id", "rate", "rate");
+            conn.FillListBox(AnimalsLb, "SELECT animal.id, CONCAT_WS(' - ', animalName, speciesName) FROM animal LEFT JOIN species ON animal.species_id = species.id");
         }
 
         private void NameTb_GotFocus(object sender, RoutedEventArgs e)
