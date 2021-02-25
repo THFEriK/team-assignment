@@ -25,15 +25,19 @@ namespace Zoo.ViewModels
 
         public MainWindowViewModel()
         {
-            InitializeComponent();
-            conn.FillListBox(SpeciesLb, "SELECT id, speciesName FROM species");
-            conn.FillDataGrid(AnimalsDg);
+            InitializeComponent();            
         }
 
         private void NewAnimalBtn_Click(object sender, RoutedEventArgs e)
         {
             var SubWindow = new AddNewAnimalViewModel(); 
             this.Content = SubWindow;            
+        }
+
+        private async void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            await conn.FillListBoxAsync(SpeciesLb, "SELECT id, speciesName FROM species");
+            await conn.FillDataGridAsync(AnimalsDg);
         }
     }
 }

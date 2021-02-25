@@ -22,64 +22,65 @@ namespace Zoo
 {
     class Connection
     {
-        private MySqlConnection conn = new MySqlConnection("SERVER = localhost; UID=root; PWD=; DATABASE=zoo");
-        private void Connect()
+        private MySqlConnection conn; 
+        private async Task ConnectAsync()
         {
             try
             {
-                conn.Open();
+                conn = new MySqlConnection("SERVER = localhost; UID=root; PWD=; DATABASE=zoo");
+                await conn.OpenAsync();
             }
             catch (MySqlException ex)
             {
                 Error(ex.Message.ToString());
             }
         }
-        public void AddSpecies(TextBox tx)
+        public async Task AddSpeciesAsync(TextBox tx)
         {
-            Connect();
+            await ConnectAsync();
             string sql = String.Format("INSERT INTO species (id, speciesName) VALUES(NULL, '{0}')", tx.Text);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             try
             {
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
             }
             catch (MySqlException ex)
             {
                 Error(ex.Message.ToString());
             }
-            conn.Close();
+            await conn.CloseAsync();
         }
        
-        public void AddAnimal(TextBox tx, ComboBox cb, ComboBox cb1, ComboBox cb2)
+        public async Task AddAnimalAsync(TextBox tx, ComboBox cb, ComboBox cb1, ComboBox cb2)
         {
-            Connect();
+            await ConnectAsync();
             string sql = String.Format("INSERT INTO animal(id, animalName, species_id, habitat_id, rate_id) VALUES(NULL, '{0}', {1}, {2}, {3})", tx.Text, cb.SelectedValue, cb1.SelectedValue, cb2.SelectedValue);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             try
             {
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
             }
             catch (Exception ex)
             {
                 Error(ex.Message.ToString());
             }
-            
-            conn.Close();
+
+            await conn.CloseAsync();
         }
         
-        public void FillComboBox(ComboBox cb, string column1,string column2, string table)
+        public async Task FillComboBoxAsync(ComboBox cb, string column1,string column2, string table)
         {
-            Connect();
+            await ConnectAsync();
             string sql = String.Format("SELECT {0}, {1} FROM {2}", column1, column2, table);
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             DataSet ds = new DataSet();
-            da.Fill(ds);
+            await da.FillAsync(ds);
 
             cb.ItemsSource = ds.Tables[0].DefaultView;
             cb.DisplayMemberPath = ds.Tables[0].Columns[1].ToString();
             cb.SelectedValuePath = ds.Tables[0].Columns[0].ToString();
 
-            conn.Close();
+            await conn.CloseAsync();
         }
 
         private void Error(string ex)
@@ -87,34 +88,34 @@ namespace Zoo
             MessageBox.Show(ex, "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        public void FillListBox(ListBox lb, string sql)
+        public async Task FillListBoxAsync(ListBox lb, string sql)
         {
-            Connect();
+            await ConnectAsync();
 
             var da = new MySqlDataAdapter(sql, conn);
             var ds = new DataSet();
 
-            da.Fill(ds);
+            await da.FillAsync(ds);
             lb.ItemsSource = ds.Tables[0].DefaultView;
             lb.DisplayMemberPath = ds.Tables[0].Columns[1].ToString();
             lb.SelectedValuePath = ds.Tables[0].Columns[0].ToString();
 
-            conn.Close();
+            await conn.CloseAsync();
         }
 
-        public void FillDataGrid(DataGrid dg)
+        public async Task FillDataGridAsync(DataGrid dg)
         {
-            Connect();
+            await ConnectAsync();
 
             var sql = "SELECT animalName, speciesName, habitat, rate FROM animal LEFT JOIN species ON animal.species_id = species.id LEFT JOIN habitat ON animal.habitat_id = habitat.id LEFT JOIN rate ON animal.rate_id = rate.id";
             var da = new MySqlDataAdapter(sql, conn);
             var dt = new DataTable();
 
-            da.Fill(dt);
+            await da.FillAsync(dt);
             dg.ItemsSource = dt.DefaultView;
             dg.SelectedValue = dt.Columns[0].ToString();
 
-            conn.Close();
+            await conn.CloseAsync();
         }
     }
 }
