@@ -31,7 +31,7 @@ namespace Zoo
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);              
+                Error(ex.Message.ToString());
             }
         }
         public void AddSpecies(TextBox tx)
@@ -45,7 +45,7 @@ namespace Zoo
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+                Error(ex.Message.ToString());
             }
             conn.Close();
         }
@@ -53,31 +53,37 @@ namespace Zoo
         public void AddAnimal(TextBox tx, ComboBox cb, ComboBox cb1, ComboBox cb2)
         {
             Connect();
-            string sql = String.Format("INSERT INTO animal(id, animalName, habitat_id, rate_id, species_id) VALUES(NULL, '{0}','{1}','{2}', {3}", tx.Text.ToString(), cb.SelectedValue, cb1.SelectedValue, cb2.SelectedValue);
-            MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            cb.ItemsSource = ds.Tables[0].DefaultView;
-            cb.DisplayMemberPath = ds.Tables[0].Columns[0].ToString();
-            cb.SelectedValuePath = ds.Tables[0].Columns[0].ToString();
-
+            string sql = String.Format("INSERT INTO animal(id, animalName, species_id, habitat_id, rate_id) VALUES(NULL, '{0}', {1}, {2}, {3})", tx.Text, cb.SelectedValue, cb1.SelectedValue, cb2.SelectedValue);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Error(ex.Message.ToString());
+            }
+            
             conn.Close();
         }
         
-        public void FillComboBox(ComboBox cb, string table, string column)
+        public void FillComboBox(ComboBox cb, string column1,string column2, string table)
         {
             Connect();
-            string sql = String.Format("SELECT DISTINCT '{0}' FROM '{1}'", table, column);
+            string sql = String.Format("SELECT {0}, {1} FROM {2}", column1, column2, table);
             MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
             DataSet ds = new DataSet();
             da.Fill(ds);
 
             cb.ItemsSource = ds.Tables[0].DefaultView;
-            cb.DisplayMemberPath = ds.Tables[0].Columns[0].ToString();
+            cb.DisplayMemberPath = ds.Tables[0].Columns[1].ToString();
             cb.SelectedValuePath = ds.Tables[0].Columns[0].ToString();
 
             conn.Close();
         }
-
+        private void Error(string ex)
+        {
+            MessageBox.Show(ex, "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }
