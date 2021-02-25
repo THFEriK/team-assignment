@@ -12,14 +12,9 @@ DEBUG;TRACE
 D:\Munka\Prog\C#\Gábor Bolyai\team-assignment\Zoo\App.xaml
 4-1422242961
 
-<<<<<<< HEAD
-9351939664
-13-1505183044
-=======
-102108582518
+9-1231093093
 136-1071536986
->>>>>>> connection
 MainWindow.xaml;ViewModels\AddNewAnimalViewModel.xaml;ViewModels\AddNewSpeciesViewModel.xaml;ViewModels\MainWindowViewModel.xaml;
 
-True
+False
 
