@@ -43,7 +43,7 @@
                       Margin="0 10"/>
 
             <Button x:Name="NewAnimalBtn"
-                    Margin="0 10">
+                    Margin="0 10" Click="NewAnimalBtn_Click">
                 <TextBlock Text="Hozzáadás"
                            FontSize="22"/>
             </Button>

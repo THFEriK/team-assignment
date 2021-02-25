@@ -24,9 +24,9 @@ namespace Zoo.ViewModels
         public AddNewAnimalViewModel()
         {            
             InitializeComponent();
-            conn.FillComboBox(SpeciesCb, "speciesName", "species");
-            conn.FillComboBox(ContinentCb, "habitat", "habitat");
-            conn.FillComboBox(VulnerableRateCb, "rate", "rate");
+            conn.FillComboBox(SpeciesCb, "id", "speciesName", "species");
+            conn.FillComboBox(ContinentCb, "id", "habitat", "habitat");
+            conn.FillComboBox(VulnerableRateCb, "id", "rate", "rate");
         }
 
         private void NameTb_GotFocus(object sender, RoutedEventArgs e)
@@ -54,9 +54,14 @@ namespace Zoo.ViewModels
         }
 
         private void AddNewSpeciesBtn_Click(object sender, RoutedEventArgs e)
-        {
+        {            
             var SubWindow = new AddNewSpeciesViewModel();
             this.Content = SubWindow;
+        }
+
+        private void NewAnimalBtn_Click(object sender, RoutedEventArgs e)
+        {
+            conn.AddAnimal(NameTb, SpeciesCb, ContinentCb, VulnerableRateCb);
         }
     }
 }
