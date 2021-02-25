@@ -20,6 +20,7 @@ namespace Zoo.ViewModels
     /// </summary>
     public partial class AddNewSpeciesViewModel : UserControl
     {
+        Connection conn = new Connection();
         public AddNewSpeciesViewModel()
         {
             InitializeComponent();
@@ -48,5 +49,13 @@ namespace Zoo.ViewModels
             var SubWindow = new AddNewAnimalViewModel();
             this.Content = SubWindow;
         }
+        
+        private void NewSpeciesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            conn.AddSpecies(NameTb);
+            MessageBox.Show("Sikeres Feltöltés!");
+            NameTb.Text = String.Empty;
+        }
+        
     }
 }

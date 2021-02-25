@@ -22,7 +22,7 @@ namespace Zoo
 {
     class Connection
     {
-        private MySqlConnection conn = new MySqlConnection("SERVER = localhost; UID=root; PWD=; DATABSE=zoo");
+        private MySqlConnection conn = new MySqlConnection("SERVER = localhost; UID=root; PWD=; DATABASE=zoo");
         private void Connect()
         {
             try
@@ -78,8 +78,6 @@ namespace Zoo
 
             conn.Close();
         }
-        
-
 
     }
 }

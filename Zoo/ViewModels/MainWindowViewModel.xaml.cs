@@ -29,7 +29,7 @@ namespace Zoo.ViewModels
         private void NewAnimalBtn_Click(object sender, RoutedEventArgs e)
         {
             var SubWindow = new AddNewAnimalViewModel(); 
-            this.Content = SubWindow;
+            this.Content = SubWindow;            
         }
     }
 }

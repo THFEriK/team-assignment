@@ -31,7 +31,7 @@
                      LostFocus="NameTb_LostFocus"/>
 
             <Button x:Name="NewSpeciesBtn"
-                    Margin="0 15">
+                    Margin="0 15" Click="NewSpeciesBtn_Click">
                 <TextBlock Text="Hozzáadás"
                            FontSize="22"/>
             </Button>
