@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Zoo.ViewModels;
 
 namespace Zoo.ViewModels
@@ -35,6 +36,17 @@ namespace Zoo.ViewModels
         }
 
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            await conn.FillListBoxAsync(SpeciesLb, "SELECT id, speciesName FROM species");
+            await conn.FillDataGridAsync(AnimalsDg);
+
+            var dt = new DispatcherTimer();
+            dt.Interval = TimeSpan.FromSeconds(10);
+            dt.Tick += dtTimer;
+            dt.Start();
+        }
+
+        private async void dtTimer(object sender, EventArgs e)
         {
             await conn.FillListBoxAsync(SpeciesLb, "SELECT id, speciesName FROM species");
             await conn.FillDataGridAsync(AnimalsDg);

@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Zoo.ViewModels
 {
@@ -66,6 +57,16 @@ namespace Zoo.ViewModels
             await conn.FillComboBoxAsync(SpeciesCb, "id", "speciesName", "species");
             await conn.FillComboBoxAsync(ContinentCb, "id", "habitat", "habitat");
             await conn.FillComboBoxAsync(VulnerableRateCb, "id", "rate", "rate");
+            await conn.FillListBoxAsync(AnimalsLb, "SELECT animal.id, CONCAT_WS(' - ', animalName, speciesName) FROM animal LEFT JOIN species ON animal.species_id = species.id");
+
+            var dt = new DispatcherTimer();
+            dt.Interval = TimeSpan.FromSeconds(10);
+            dt.Tick += dtTimer;
+            dt.Start();
+        }
+
+        private async void dtTimer(object sender, EventArgs e)
+        {
             await conn.FillListBoxAsync(AnimalsLb, "SELECT animal.id, CONCAT_WS(' - ', animalName, speciesName) FROM animal LEFT JOIN species ON animal.species_id = species.id");
         }
     }
