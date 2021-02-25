@@ -23,11 +23,7 @@ namespace Zoo.ViewModels
         Connection conn = new Connection();
         public AddNewAnimalViewModel()
         {            
-            InitializeComponent();
-            conn.FillComboBox(SpeciesCb, "id", "speciesName", "species");
-            conn.FillComboBox(ContinentCb, "id", "habitat", "habitat");
-            conn.FillComboBox(VulnerableRateCb, "id", "rate", "rate");
-            conn.FillListBox(AnimalsLb, "SELECT animal.id, CONCAT_WS(' - ', animalName, speciesName) FROM animal LEFT JOIN species ON animal.species_id = species.id");
+            InitializeComponent();            
         }
 
         private void NameTb_GotFocus(object sender, RoutedEventArgs e)
@@ -60,9 +56,17 @@ namespace Zoo.ViewModels
             this.Content = SubWindow;
         }
 
-        private void NewAnimalBtn_Click(object sender, RoutedEventArgs e)
+        private async void NewAnimalBtn_Click(object sender, RoutedEventArgs e)
         {
-            conn.AddAnimal(NameTb, SpeciesCb, ContinentCb, VulnerableRateCb);
+            await conn.AddAnimalAsync(NameTb, SpeciesCb, ContinentCb, VulnerableRateCb);
+        }
+
+        private async void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            await conn.FillComboBoxAsync(SpeciesCb, "id", "speciesName", "species");
+            await conn.FillComboBoxAsync(ContinentCb, "id", "habitat", "habitat");
+            await conn.FillComboBoxAsync(VulnerableRateCb, "id", "rate", "rate");
+            await conn.FillListBoxAsync(AnimalsLb, "SELECT animal.id, CONCAT_WS(' - ', animalName, speciesName) FROM animal LEFT JOIN species ON animal.species_id = species.id");
         }
     }
 }

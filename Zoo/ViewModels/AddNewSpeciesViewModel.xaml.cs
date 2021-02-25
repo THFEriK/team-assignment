@@ -50,9 +50,9 @@ namespace Zoo.ViewModels
             this.Content = SubWindow;
         }
         
-        private void NewSpeciesBtn_Click(object sender, RoutedEventArgs e)
+        private async void NewSpeciesBtn_Click(object sender, RoutedEventArgs e)
         {
-            conn.AddSpecies(NameTb);
+            await conn.AddSpeciesAsync(NameTb);
             MessageBox.Show("Sikeres Feltöltés!");
             NameTb.Text = String.Empty;
         }
